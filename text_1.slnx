@@ -1,7 +1,240 @@
-<Solution>
-  <Configurations>
-    <Platform Name="x64" />
-    <Platform Name="x86" />
-  </Configurations>
-  <Project Path="text_1/text_1.vcxproj" Id="6705357e-84b9-40cc-a048-6b1ea3ef4a46" />
-</Solution>
+// std - standard - 标准
+// i intput-- 输入
+// o - output-- 输出
+
+
+
+//                                                  NO1.
+//main函数的多种写法
+////1.
+//void main()
+//{
+//	printf("hello\n");
+//}
+//// 2.相似，参数部分多了void 表示main函数无参
+//int main(void)
+//{
+//	return 0;
+//}
+////3.其实main函数时可以有参数的，如果想使用参数，那就写上，如果不需要，就不写，暂时不需要了解main函数参数
+//int main(int argc, char* argv[])
+//{
+//	return 0;
+//}
+
+
+
+
+
+//                                                   NO2.
+//Print 函数 和 库 函数
+//print 是 一个库函数 - C语言的标准库提供的现成函数，功能是打印信息 ，print format 按照格式打印信息
+//""括起来的一串字符被称为：字符串
+// \n 是换行
+// %d 打印整数    %c 打印字符  %f 打印小数（默认打印到小数点后六位） %s 打印字符串
+//int main()
+//{
+//	printf("%d\n",100);     整数
+//	printf("%s\n", "haha");   字符串
+//	printf("%c\n", 'q');//单引号括起来的是字符
+//	printf("%f\n", 3.14);  小数
+//	return 0;
+//}
+
+
+
+
+
+
+//                                                    NO3.
+// 关键字，创建的变量不可是关键字
+//大写字母ASKII码值 65-90 与小写字母少32
+//数字0-9 48-57
+//换行符 10
+//0-31 不可打印字符，屏幕上显示不出来
+
+
+
+//int main()
+//{
+//	'a';
+//	'q';
+//	'1';
+//	'#';
+//	printf("%c\n", 'a');
+//	printf("%c\n", 97);
+//
+//	return 0;
+//}
+// 
+// 
+// 
+//int main()
+//{
+//	//32 - 127
+//	//循环
+//	int i = 0;
+//	for (i = 32; i <= 127; i++)
+//	{
+//		printf("%c", i);
+//		if (i % 16 == 15)
+//			printf("\n");
+//	}
+//
+//	return 0;
+//}
+//
+//
+
+
+
+
+//                                                     NO.4
+//字符串  "abcde" 末尾隐藏一个字符\0(字符串结束标志）
+//int main()
+//{
+//	printf("%s\n", "abcde");
+//	printf("abcde");
+//
+//	return 0;
+//}
+//字符串可以存放在字符数组中
+// strlen 是一个库函数，求的是字符串长度，统计的是字符串中\0之前的字符个数   **strlen求的是字符串长度
+//strlen 返回的值是size_t类型的，应该使用%zd
+//#include <stdio.h>
+//#include <string.h>
+//int main()
+//{
+//
+//	char arr1[] = "abcdef";//arr1 中含有\0
+//	char arr2[] = { 'a','b','c','d','e','f'};//arr2 中无\0   不会停止，是随机的
+//	printf("%zd\n", strlen(arr1));
+//	printf("%zd\n", strlen(arr2));  //随机
+//	return 0;
+//}
+//
+
+
+
+
+
+
+
+//                                              NO5.转义字符
+//#include <stdio.h>
+//int main()
+//{
+//	printf("abc\ndef");
+//	return 0;
+//}
+
+//支持三字母词的编译器上
+// ??) -->  ]
+// ??( -->  [
+
+//#include <stdio.h>
+//int main()
+//{
+//	printf("(are you ok \?\?)");// (are you ok ]
+//	//("are you ok ??)
+//	 //\? 防止其被解释为三字母词
+//                 
+//	return 0;
+//} 
+
+//#include <stdio.h>
+//int main()
+//{
+//	//printf("%c\n",'a');
+//	//printf("%c\n", 'b');
+//	printf("%c\n", '\'');// \'  转义
+//	printf("%s\n","abc");
+//	printf("%s\n", "a");                    // 想打印单引号可以加\来进行
+//	printf("%s\n", "\"");
+//
+//
+//	return 0;
+//}
+
+#include <stdio.h>
+//int main()
+//{
+//	printf("c:\test\bit\n");  //防止转义
+//	printf("c:\\test\\bit");
+//	return 0;
+//}
+
+//int main()
+//{
+//	printf("\a");   //warn
+//
+//	return 0;
+//}
+
+//int main()
+//{
+//	printf("abcdef\n");
+//	printf("abcd\bef\n");  //退格符，回退，可能会覆盖删除字符  
+//	printf("abcd\b\n");  //个人理解  无\b 后的\n 时不会结束，默认仍有字母，因此还会删除，只有、n结束后，才会同上
+//	printf("abcd\b");
+//	return 0;
+//}
+
+ #include <stdio.h>
+//int main()
+//{
+//	printf("abcdef\r\n");  //将光标移到同一行的开头
+//	printf("abcdef\rcd");//覆盖而非添加
+//	return 0;
+//}
+
+//int main()
+//{
+//	printf("a\tbd\tdef\tqq");  // \t 进行空格补偿 ，用于对齐  8/4
+//
+//	return 0;
+//}
+
+//int main()
+//{
+//	printf("%c\n",'\130');
+//	printf("%c\n", '\77');// 同66行  \ddd （一到三个数字即可） 是字符类型  将\后的8进制数字转换为10进制数字，这个数字作为ASKII码值表示的字符
+//	printf("%c\n", '\x36');
+//	return 0;
+//}
+// xdd 表示16进制  x66  \0的ASKII值是0，用于字符串结束标志
+
+//#include <string.h>
+//int main()
+//{
+//	printf("%zd\n", strlen("abcdef"));//6
+//	printf("%zd\n", strlen("c:\test\bit\114\test.c"));  // 16   转义字符按1来算长度
+//	return 0;
+//
+//}
+//
+//
+
+
+
+//                                                        NO6.语句和语句分类
+//   1.    ;   空语句
+//2.   表达式语句
+//3. 函数调用语句  
+//4.  复合语句
+//5. 控制语句  ；  顺序结构  选择结构 ： if switch    循环结构: for      while     do while    转向语句 ： break 语句   retur
+ 
+
+
+ 
+
+   //                                                     NO7.注释         
+
+/*int main()
+{
+	int a = 10;  // 创建整数类型的变量为a并赋值为10
+	return 0;
+}
+*/    // 此类注释方式不支持嵌套     ，一般双斜杠
+
+ 
